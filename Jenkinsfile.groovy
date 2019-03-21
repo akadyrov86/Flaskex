@@ -1,6 +1,5 @@
 node {
-    properties([parameters([string(defaultValue: '127.0.0.1', description: 'Please give an IP address to build a site ', name: 'IP', trim: true)])])
-    
+properties([parameters([choice(choices: ['Development '], description: 'Dev Department', name: 'DEV'), choice(choices: ['QA'], description: 'QA Department ', name: 'QA'), choice(choices: ['PROD'], description: 'PROD Department ', name: 'PROD')])])    
     stage("Install git"){
         sh "ssh ec2-user@${IP}  sudo yum install git python-pip -y"
     }
