@@ -16,7 +16,7 @@ node {
         }
     }
     stage("Copy files"){
-        sh "scp  -r *  ec2-user@${IP}:/tmp/"
+        sh "scp  -r *  ec2-user@${IP}:/home/ec2-user"
     }
     stage("Move files to /fleskex"){
         try{
@@ -27,7 +27,7 @@ node {
         }
     }
     stage("Install requirment"){
-         sh "ssh ec2-user@${IP}   sudo pip install -r /tmp/requirements.txt"
+         sh "ssh ec2-user@${IP}   sudo pip install -r /flaskex/requirements.txt"
         
     }
     stage("move service to /etc"){
